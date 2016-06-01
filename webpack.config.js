@@ -4,8 +4,8 @@ const path = require("path");
 const webpack = require("webpack");
 
 const PATHS = {
-  root: path.join(__dirname, "public", "app"),
-  dist: path.join(__dirname, "public", "dist")
+  root: path.join(__dirname, "app"),
+  dist: path.join(__dirname, "dist")
 };
 
 const LOADERS = {
@@ -37,9 +37,6 @@ module.exports = {
   },
   module: {
     loaders: [ LOADERS.babel, LOADERS.css ]
-  },
-  jshint: {
-    esversion: 6
   },
   devServer: {
     contentBase: PATHS.dist,
