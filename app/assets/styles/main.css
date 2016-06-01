@@ -1,0 +1,131 @@
+/* Set default margin and padding for all elements */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+
+html, body {
+  font-family:Verdana, Geneva, sans-serif;
+}
+
+/* Clear Floats */
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  clear: both;
+  *zoom: 1;
+}
+
+
+.left {
+  float:left;
+}
+
+.right {
+  float:right;
+}
+
+#container {
+  width:95%;
+  margin:0 auto;
+}
+
+
+/* Top Bar */
+.top-bar {
+  background-color:#222;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px 0;
+}
+
+#logo {
+  display:inline-block;
+  margin-left:45px;
+
+}
+
+#logo img {
+  width:250px;
+  height:auto;
+}
+
+
+.main-content {
+  margin-top:30px;
+  border:1px solid black;
+}
+
+
+.option-wrapper {
+  width: 30%;
+  background:blue;
+  margin-right:4%;
+}
+
+.table-wrapper {
+  width:66%;
+}
+
+
+
+
+
+
+
+
+
+
+/* Tags */
+
+.tags {
+  display: inline-block;
+  background-color:#e0edf5;
+  border-radius: 5px;
+  font-weight:300;
+  font-size:.9em;
+  color:#2f5d92;
+  padding:5px 12px 5px 8px;
+}
+
+.tags p {
+  display:inline-block;
+  margin-right:7px;
+}
+
+
+.close {
+  color:#4483AF;
+  font-size:.75em;
+  font-weight: 400;
+  vertical-align: 1px;
+}
+
+.close:hover {
+  color:#36698D;
+  cursor:pointer;
+}
+
+
+.searchBar {
+  background-color:white;
+  padding:2px 0 2px 10px;
+  height:30px;
+  width:250px;
+  border: 1px solid #EBE9EB;
+  border-radius: 5px;
+  font-size:17px;
+}
+
+
+
+
