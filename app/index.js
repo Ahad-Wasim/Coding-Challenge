@@ -26,12 +26,14 @@ class App extends Component {
 
       response.data.forEach((company) => {
 
-        if(!cache[company.Sector]){
-          cache[company.Sector] = [company];
-          marketCache[company.Sector] = +company['Market Cap']; 
+        let sector = company.Sector.toUpperCase();
+
+        if(!cache[sector]){
+          cache[sector] = [company];
+          marketCache[sector] = +company['Market Cap']; 
         } else {
-          cache[company.Sector].push(company)
-          marketCache[company.Sector] += +company['Market Cap'];
+          cache[sector].push(company)
+          marketCache[sector] += +company['Market Cap'];
         }
       });
 
@@ -51,14 +53,27 @@ class App extends Component {
         <TopBar />
         <MainContent 
           companyData={this.state} 
-          addSector={this.addSector}
+          addSector={this.addSector.bind(this)}
+          removeSector={this.removeSector.bind(this)}
         />
       </div>
     );
   }
 
-  addSector(sect){
+  addSector(sector){
+    if(this.state.cachedSectors[sector]){
+      this.setState({ options: this.state.options.concat(sector) })
+      return true;    
+    }
 
+    return false;
+  }
+
+  removeSector(sector){
+    // can't use splice
+    this.setState({
+      options: _.filter(this.state.options, (option) => sector === option ? false: true)
+    });
   }
 }
 
