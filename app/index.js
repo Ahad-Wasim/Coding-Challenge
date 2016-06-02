@@ -12,7 +12,8 @@ class App extends Component {
     super()
     this.state = {
       cachedSectors: null,
-      options: null
+      cachedMarketCap: null,
+      options: null,
     }
   }
 
@@ -20,23 +21,25 @@ class App extends Component {
     axios.get(API).then((response) => {
       
       let cache = {};
-      let sectorMarketValueCache = {}
+      let marketCache = {}
 
       response.data.forEach((company) => {
         if(!cache[company.Sector]){
-          cache[company.Sector] = [company]
+          cache[company.Sector] = [company];
+          marketCache[company.Sector] = +company['Market Cap']; 
         } else {
           cache[company.Sector].push(company)
+          marketCache[company.Sector] += +company['Market Cap'];
         }
       });
 
-      this.setState({cachedSectors: cache})
+      this.setState({ cachedSectors: cache, cachedMarketCap: marketCache })
 
     });
   }
 
   render(){
-    console.log(this.state.cachedSectors);
+    console.log(this.state);
     return (
       <div>
         <TopBar />
