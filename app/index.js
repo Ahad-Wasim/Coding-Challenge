@@ -28,7 +28,8 @@ class App extends Component {
 
       response.data.forEach((company) => {
 
-        // caching the sectors to optimize rendering. Instead of having to iterate through n companies.
+        // caching the sectors by storing them in a Hash Table will optimize rendering
+        // Instead of having to iterate through n companies.
         // We will only have to iterate throught just N sectors
         let sector = company.Sector.toUpperCase();
 
@@ -67,6 +68,7 @@ class App extends Component {
     );
   }
 
+  // Helper Function
   addSector(sector){
     if(this.state.cachedSectors[sector]){
       let options = this.state.options.concat(sector);
@@ -82,6 +84,7 @@ class App extends Component {
     return false;
   }
 
+  // Helper Function
   calculateSize(options){
     let count = 0;
     _.each(options, (option) => {
@@ -91,6 +94,7 @@ class App extends Component {
     return count;
   }
 
+  // Helper Function
   calculateMarketCap(options){
     let count = 0;
     if(options.length){
@@ -106,6 +110,7 @@ class App extends Component {
     return Math.floor(count);
   }
 
+  // Helper Function
   removeSector(sector){
 
     let options = _.filter(this.state.options, (option) => sector === option ? false: true);
