@@ -1,7 +1,7 @@
 import React from 'react';
 import TableBody from './table_body.js';
 
-const TableWrapper =  () => {
+const TableWrapper =  (props) => {
   return (
     <section className="right table-wrapper">
       
@@ -14,7 +14,11 @@ const TableWrapper =  () => {
           </tr>
         </thead>
 
-        <TableBody />
+        <TableBody 
+          options={props.options}
+          cachedSectors={props.cachedSectors}
+          cachedCompanyList={props.cachedCompanyList}
+        />
         
       </table> 
     </section> 

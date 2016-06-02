@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       cachedSectors: null,
       cachedMarketCap: null,
-      options: null,
+      cachedCompanyList:null,
+      options: []
     }
   }
 
@@ -24,6 +25,7 @@ class App extends Component {
       let marketCache = {}
 
       response.data.forEach((company) => {
+
         if(!cache[company.Sector]){
           cache[company.Sector] = [company];
           marketCache[company.Sector] = +company['Market Cap']; 
@@ -33,7 +35,11 @@ class App extends Component {
         }
       });
 
-      this.setState({ cachedSectors: cache, cachedMarketCap: marketCache })
+      this.setState({ 
+        cachedSectors: cache,
+        cachedMarketCap: marketCache,
+        cachedCompanyList: response.data  
+      });
 
     });
   }
@@ -43,9 +49,16 @@ class App extends Component {
     return (
       <div>
         <TopBar />
-        <MainContent />
+        <MainContent 
+          companyData={this.state} 
+          addSector={this.addSector}
+        />
       </div>
     );
+  }
+
+  addSector(sect){
+
   }
 }
 

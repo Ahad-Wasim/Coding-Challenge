@@ -1,141 +1,25 @@
 import React from 'react';
-import Company_Row from './company_row.js';
+import _ from 'underscore';
+import CompanyRow from './company_row.js';
 
-const TableBody = () => {
+const TableBody = (props) => {
+ 
+  let companyEntities;
+
+  if(!props.options.length){
+    companyEntities = _.map(props.cachedCompanyList, company => <CompanyRow company={company} />);
+  } else {
+    companyEntities = [];
+    _.each(props.options, (option) => {
+      _.each(props.cachedSectors[option], (company) => {
+        companyEntities.push(<CompanyRow company={company} />);
+      })
+    })
+  }
+
   return (
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-                      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>                <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>                <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>                <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>                <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>                <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>                <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>                <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>                <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>                <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>                <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>                <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
+      {companyEntities}
     </tbody>
   );
 };
