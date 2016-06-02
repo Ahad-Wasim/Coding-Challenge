@@ -7,12 +7,12 @@ const TableBody = (props) => {
   let companyEntities;
 
   if(!props.options.length){
-    companyEntities = _.map(props.cachedCompanyList, company => <CompanyRow company={company} />);
+    companyEntities = _.map(props.cachedCompanyList, (company, id) => <CompanyRow key={id} company={company} />);
   } else {
     companyEntities = [];
     _.each(props.options, (option) => {
-      _.each(props.cachedSectors[option], (company) => {
-        companyEntities.push(<CompanyRow company={company} />);
+      _.each(props.cachedSectors[option], (company, id) => {
+        companyEntities.push(<CompanyRow key={`${id}-${option}`} company={company} />);
       })
     })
   }

@@ -4,12 +4,18 @@ import SectorBox from './sector_box.js';
 import Summary from './summary.js';
 
 
-const OptionWrapper = () => {
+
+
+const OptionWrapper = (props) => {
   return (
     <section className="left option-wrapper">
-      <SearchBar />
-      <SectorBox />
-      <Summary />
+      <SearchBar addSector={props.addSector} />
+      <SectorBox options={props.options} removeSector={props.removeSector} />
+      <Summary
+        options={props.options}
+        companySize={props.companySize} 
+        highestMarketCap={props.highestMarketCap} 
+      />
     </section>
   );
 }
