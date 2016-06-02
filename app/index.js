@@ -28,6 +28,8 @@ class App extends Component {
 
       response.data.forEach((company) => {
 
+        // caching the sectors to optimize rendering. Instead of having to iterate through n companies.
+        // We will only have to iterate throught just N sectors
         let sector = company.Sector.toUpperCase();
 
         if(!cache[sector]){
@@ -96,7 +98,7 @@ class App extends Component {
         count += this.state.cachedMarketCap[sector]
       });
     } else {
-      _.each(this.state.cachedMarketCap, (sector)=> {
+      _.each(this.state.cachedMarketCap, (sector) => {
         count += sector
       })
     }

@@ -96,6 +96,11 @@ html, body {
   width:300px;
   height:200px;
   margin-top:50px;
+  overflow-y: hidden;
+}
+
+.sectorBox:hover {
+  overflow-y: scroll;
 }
 
 .summary {
