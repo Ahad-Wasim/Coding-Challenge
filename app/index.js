@@ -20,6 +20,7 @@ class App extends Component {
     axios.get(API).then((response) => {
       
       let cache = {};
+      let sectorMarketValueCache = {}
 
       response.data.forEach((company) => {
         if(!cache[company.Sector]){
@@ -35,6 +36,7 @@ class App extends Component {
   }
 
   render(){
+    console.log(this.state.cachedSectors);
     return (
       <div>
         <TopBar />
